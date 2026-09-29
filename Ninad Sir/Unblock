@@ -1,0 +1,12 @@
+sudo bash -c '
+DAEMON="/Library/LaunchDaemons/com.nrpcapitals.blockusb.plist"
+HELPER="/Library/PrivilegedHelperTools/com.nrpcapitals.blockusb.sh"
+
+/bin/launchctl bootout system "$DAEMON" 2>/dev/null || true
+/bin/rm -f "$DAEMON"
+/bin/rm -f "$HELPER"
+
+echo ""
+echo "USB STORAGE BLOCK REMOVED"
+echo "External USB storage can be used normally."
+'
