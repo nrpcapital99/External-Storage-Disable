@@ -1,1 +1,13 @@
-sudo bash -c 'launchctl bootout system /Library/LaunchDaemons/com.nrpcapitals.blockusb.plist 2>/dev/null; rm -f /Library/LaunchDaemons/com.nrpcapitals.blockusb.plist /Library/PrivilegedHelperTools/com.nrpcapitals.blockusb.sh; echo "USB STORAGE UNBLOCKED"'
+sudo bash -c '
+DAEMON="/Library/LaunchDaemons/com.nrpcapitals.blockusb.plist"
+HELPER="/Library/PrivilegedHelperTools/com.nrpcapitals.blockusb.sh"
+
+launchctl bootout system "$DAEMON" 2>/dev/null || true
+rm -f "$DAEMON"
+rm -f "$HELPER"
+
+echo ""
+echo "======================================"
+echo " USB STORAGE: UNBLOCKED"
+echo "======================================"
+'
